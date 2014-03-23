@@ -1,0 +1,75 @@
+{{#user}}
+<form method="post" action="{{app.base}}panel/submit-user/{{client_id}}/{{id}}" enctype="multipart/form-data" id="user-form">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="media">
+				<div class="media-choose pull-left">
+					<div id="js-media" class="media-preview hidden"></div>
+					<input type="file" name="upload" size="1" accept="image/*" title="[[Add image]]&hellip;" class="input js-media-preview" data-placeholder="#js-media">
+
+					{{#image}}
+					<div class="media-item js-remove-item">
+						<div class="overlay">
+							<div class="option delete js-remove"><i class="fa fa-times"></i></div>
+						</div>
+
+						<div class="media-wrapper" style="background-image: url({{url}})"></div>
+						<input type="hidden" name="image" value="{{checksum}}">
+					</div>
+					{{/image}}
+				</div>
+
+				<div class="media-body">
+					{{#id}}
+					<p class="h3 text-muted">{{username}}</p>
+					<div class="form-group">
+						<label class="control-label">[[Full name]]</label>
+						<input type="text" name="fullname" value="{{fullname}}" class="form-control" autocomplete="off" placeholder="[[Full name]]">
+					</div>
+					{{/id}}
+
+					{{^id}}
+					<input type="hidden" name="client_id" value="{{client_id}}">
+					<div class="form-group"><input type="text" name="new-username" value=""class="form-control" autocomplete="off" placeholder="Username"  required></div>
+					<div class="form-group"><input type="text" name="fullname" value="{{fullname}}" class="form-control" autocomplete="off" placeholder="Real name"></div>
+					{{/id}}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label">[[Password]]</label>
+				{{#id}}
+				<div class="form-group"><input type="password" name="previous-password" value="" placeholder="Previous password" class="form-control"></div>
+				<div class="form-group"><input type="password" name="new-password" value="" placeholder="New password" class="form-control"></div>
+				<div class="form-group"><input type="password" name="confirm-password" value="" placeholder="Confirm password" class="form-control"></div>
+				{{/id}}
+
+				{{^id}}
+				<div class="form-group"><input type="password" name="new-password" value="" placeholder="Password" class="form-control" required></div>
+				<div class="form-group"><input type="password" name="confirm-password" value="" placeholder="Confirm password" class="form-control" required></div>
+				{{/id}}
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<label class="control-label">[[Modules]]</label>
+			<div class="table-responsive">
+				<table class="module-list table table-bordered">
+					<tbody>
+						{{#modules}}
+						<tr>
+							<td><label for="module-{{id}}"><i class="fa fa-{{icon}}"></i> {{alias}}</label></td>
+							<td class="col-md-1">
+								<input type="hidden" name="module[{{id}}][name]" value="{{name}}">
+								<input type="hidden" name="module[{{id}}][icon]" value="{{icon}}">
+								<input type="checkbox" name="module[{{id}}][checked]" id="module-{{id}}" class="checkbox" {{#selected}}checked{{/selected}}>
+							</td>
+						</tr>
+						{{/modules}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</form>
+{{/user}}

@@ -1,0 +1,34 @@
+{
+	"clients": {
+		"en":	"Clients",
+		"el":	"Πελάτες"
+	},
+	"new-client": {
+		"en":	"New client",
+		"el":	"Νέος πελάτης"
+	},
+	"edit-client": {
+		"en":	"Edit client",
+		"el":	"Επεξεργασία πελάτη"
+	},
+	"client-info": {
+		"en":	"Client info",
+		"el":	"Πληροφορίες πελάτη"
+	},
+	"users": {
+		"en":	"Users",
+		"el":	"Χρήστες"
+	},
+	"modules": {
+		"en":	"Modules",
+		"el":	"Μονάδες"
+	},
+	"new-module": {
+		"en":	"New module",
+		"el":	"Νέα μονάδα"
+	},
+	"module-options": {
+		"en":	"Module options",
+		"el":	"Επιλογές μονάδας"
+	}
+}

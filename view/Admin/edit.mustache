@@ -1,0 +1,188 @@
+<form method="post" action="{{app.base}}{{module}}/submit/{{module-id}}" enctype="multipart/form-data">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="panel-breadcrumbs">
+				{{#breadcrumbs}}
+				{{#select}}
+				<div class="crumb crumb-dropdown">
+					<select class="js-content-load" data-target=".js-select-content" data-placeholder="{{placeholder}}">
+						{{#options}}
+						<option data-url="{{app.base}}{{link}}" {{#active}}selected{{/active}}>{{name}}</option>
+						{{/options}}
+					</select>
+				</div>
+				{{/select}}
+				{{^select}}
+				<a href="{{app.base}}{{link}}" class="crumb">{{#icon}}<i class="icon fa fa-{{icon}}"></i>{{/icon}} {{{name}}}</a>
+				{{/select}}
+				{{/breadcrumbs}}
+			</div>
+
+			<div class="btn-toolbar">
+				<button type="submit" name="action[save]" class="btn btn-success btn-sm input-medium">
+					<i class="fa fa-save"></i> [[Save]]
+				</button>
+
+				{{#module-id}}
+				<button type="submit" name="action[remove]" class="btn btn-danger btn-sm">
+					<i class="fa fa-times"></i> [[Remove]]
+				</button>
+				{{/module-id}}
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<div class="row">
+				<div class="panel-sidebar col-md-3">
+					<ul class="selection-list">
+					{{#modules}}
+						<li class="selection {{#active}}active{{/active}}">
+							<i class="chevron fa fa-chevron-right"></i>
+							<a href="{{app.base}}{{name}}" class="link"><i class="fa fa-{{icon}} fa-fw"></i> {{alias}}</a>
+						</li>
+					{{/modules}}
+					</ul>
+				</div>
+
+				<div class="col-md-9 item-edit">
+					{{#primary.string}}
+					<div class="form-group">
+						<input type="{{type}}" name="{{name}}" value="{{data}}" id="input-{{name}}" class="form-control" placeholder="{{alias}}" {{required}}>
+					</div>
+					{{/primary.string}}
+
+					<div class="text-list">
+						<ul class="nav nav-tabs">
+							{{#primary.text}}
+							<li {{#active}}class="active"{{/active}}><a href="#input-{{name}}" data-toggle="tab">{{alias}}</a></li>
+							{{/primary.text}}
+						</ul>
+
+						<div class="tab-content">
+							{{#primary.text}}
+							<div class="tab-pane {{#active}}active{{/active}}" id="input-{{name}}">
+								<textarea name="{{name}}" rows="14" id="input-{{name}}" class="form-control form-code {{class}}" placeholder="{{alias}}" {{required}}>{{data}}</textarea>
+							</div>
+							{{/primary.text}}
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							{{#primary.date}}
+							<div class="form-group">
+								<label class="control-label" for="input-{{name}}">{{alias}}</label>
+								<div class="input-group">
+									{{#time}}<input type="text" name="{{name}}" value="{{data}}" class="form-control js-datetimepicker" data-date-format="dd/mm/yyyy hh:ii" {{required}}>{{/time}}
+									{{^time}}<input type="text" name="{{name}}" value="{{data}}" class="form-control js-datepicker" data-date-format="dd/mm/yyyy" {{required}}>{{/time}}
+									<span class="input-group-addon"><i data-time-icon="fa fa-time" data-date-icon="fa fa-calendar" class="fa fa-calendar"></i></span>
+								</div>
+							</div>
+							{{/primary.date}}
+
+							{{#primary.category}}
+							<div class="form-group">
+								<label class="control-label" for="input-{{name}}">{{alias}}</label>
+								<div class="controls">
+									<input type="hidden" name="{{name}}[]" value="">
+									<select name="{{name}}[]" class="form-control js-chosen" data-placeholder="Select categories..." {{type}} {{required}}>
+										{{#data}}
+										<option value="{{id}}" {{selected}}>{{name}}</option>
+										{{/data}}
+									</select>
+								</div>
+							</div>
+							{{/primary.category}}
+
+							{{#primary.boolean}}
+							<input type="hidden" name="{{name}}" value="">
+							<label class="checkbox">
+								<input type="checkbox" name="{{name}}" id="input-{{name}}" {{data}} {{required}}>
+								<b>{{alias}}</b>
+							</label>
+							{{/primary.boolean}}
+						</div>
+
+						<div class="col-md-6">
+							{{#secondary.string}}
+							<div class="form-group">
+								<label class="control-label" for="input-{{name}}">{{alias}}</label>
+								<div class="controls">
+									<input type="{{type}}" name="{{name}}" value="{{data}}" id="input-{{name}}" class="form-control"  placeholder="{{alias}}" {{#tag}}data-role="tagsinput"{{/tag}} {{required}}>
+								</div>
+							</div>
+							{{/secondary.string}}
+
+							{{#primary.number}}
+							<div class="form-group">
+								<label class="control-label" for="input-{{name}}">{{alias}}</label>
+								<div class="controls">
+									<input type="number" name="{{name}}" value="{{data}}" id="input-{{name}}" class="form-control"  placeholder="{{alias}}" {{required}}>
+								</div>
+							</div>
+							{{/primary.number}}
+						</div>
+					</div>
+
+					{{#media}}
+					<div class="media-list">
+						<ul class="nav nav-tabs">
+							{{#image}}
+							<li class="{{active}}"><a href="#tab-{{name}}" data-toggle="tab">{{alias}}</a></li>
+							{{/image}}
+							{{#generic}}
+							<li class="{{active}}"><a href="#tab-{{name}}" data-toggle="tab">{{alias}}</a></li>
+							{{/generic}}
+						</ul>
+
+						<div class="tab-content">
+							{{#image}}
+							<div class="media-container tab-pane {{active}} js-sortable" id="tab-{{name}}">
+								<div class="media-item item-new">
+									<i class="icon fa fa-plus-circle"></i>
+									<input type="file" name="{{name}}[]" size="1" accept="image/*" title="[[Add images]]&hellip;" class="input js-media-preview" data-placeholder="#js-{{name}}-placeholder" multiple {{required}}>
+								</div>
+
+								{{#data}}
+								<div class="media-item js-sort-item js-remove-item">
+									<div class="overlay js-sort-handle">
+										<div class="option delete js-remove"><i class="fa fa-times"></i></div>
+									</div>
+									<div class="media-wrapper" style="background-image: url({{thumb}})"></div>
+									<input type="hidden" name="{{name}}[old][]" value="{{id}}">
+								</div>
+								{{/data}}
+
+								<div id="js-{{name}}-placeholder" class="media-item media-preview hidden"></div>
+							</div>
+							{{/image}}
+
+							{{#generic}}
+							<div class="media-container tab-pane {{active}} js-sortable" id="tab-{{name}}">
+								<div class="media-item item-new">
+									<i class="icon fa fa-plus-circle"></i>
+									<input type="file" name="{{name}}[]" size="1" title="[[Add files]]&hellip;" class="input js-media-preview" data-placeholder="#js-{{name}}-placeholder" multiple {{required}}>
+								</div>
+
+								{{#data}}
+								<div class="media-item js-sort-item js-remove-item">
+									<div class="overlay js-sort-handle" title="{{filename}}">
+										<div class="option delete js-remove"><i class="fa fa-times"></i></div>
+									</div>
+									<div class="file-preview" style="background-image: url({{app.base}}img/filetypes/{{extension}}.png)"></div>
+									<div class="file-name">{{filename}}</div>
+									<input type="hidden" name="{{name}}[old][]" value="{{id}}">
+								</div>
+								{{/data}}
+
+								<div id="js-{{name}}-placeholder" class="media-item media-preview hidden"></div>
+							</div>
+							{{/generic}}
+						</div>
+					</div>
+					{{/media}}
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

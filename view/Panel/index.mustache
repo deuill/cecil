@@ -1,0 +1,81 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="panel-breadcrumbs">
+			{{#breadcrumbs}}
+			{{#select}}
+			<div class="crumb crumb-dropdown">
+				<select class="js-content-load" data-target=".js-select-content" data-placeholder="{{placeholder}}">
+					{{#options}}
+					<option data-url="{{app.base}}{{link}}" {{#active}}selected{{/active}}>{{name}}</option>
+					{{/options}}
+				</select>
+			</div>
+			{{/select}}
+			{{^select}}<a href="{{app.base}}{{link}}" class="crumb">{{#icon}}<i class="icon fa fa-{{icon}}"></i>{{/icon}} {{{name}}}</a>{{/select}}
+			{{/breadcrumbs}}
+		</div>
+
+		<div class="btn-toolbar">
+			{{#client}}
+			<button type="submit" name="action[save]" form="client-form" class="btn btn-success btn-sm">
+				<i class="fa fa-save"></i> [[Save]]
+			</button>
+
+			{{#id}}
+			<button type="submit" name="action[remove]" form="client-form" class="btn btn-danger btn-sm">
+				<i class="fa fa-times"></i> [[Remove]]
+			</button>
+			{{/id}}
+			{{/client}}
+
+			{{#user}}
+			<button type="submit" name="action[save]" form="user-form" class="btn btn-success btn-sm">
+				<i class="fa fa-save"></i> [[Save]]
+			</button>
+
+			{{#user_id}}
+			<button type="submit" name="action[remove]" form="user-form" class="btn btn-danger btn-sm">
+				<i class="fa fa-times"></i> [[Remove]]
+			</button>
+			{{/user_id}}
+			{{/user}}
+
+			{{#module}}
+			<button type="submit" name="action[save]" form="module-form" class="btn btn-success btn-sm">
+				<i class="fa fa-save"></i> [[Save]]
+			</button>
+
+			{{^essential}}
+			{{#id}}
+			<button type="submit" name="action[remove]" form="module-form" class="btn btn-danger btn-sm">
+				<i class="fa fa-times"></i> [[Remove]]
+			</button>
+			{{/id}}
+			{{/essential}}
+			{{/module}}
+		</div>
+	</div>
+
+	<div class="panel-body">
+		<div class="row">
+			<div class="panel-sidebar col-md-3">
+				<ul class="selection-list">
+					<li class="selection {{#client}}active{{/client}}">
+						<i class="chevron fa fa-chevron-right"></i>
+						<a href="{{app.base}}panel/clients" class="link"><i class="fa fa-users fa-fw"></i> [[Clients]]</a>
+					</li>
+					<li class="selection {{#module}}active{{/module}}">
+						<i class="chevron fa fa-chevron-right"></i>
+						<a href="{{app.base}}panel/modules" class="link"><i class="fa fa-sitemap fa-fw"></i> [[Modules]]</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="col-md-9 js-container">
+				{{#client}}{{> Clients/index}}{{/client}}
+				{{#user}}  {{> Users/index}}  {{/user}}
+				{{#module}}{{> Modules/index}}{{/module}}
+			</div>
+		</div>
+	</div>
+</div>

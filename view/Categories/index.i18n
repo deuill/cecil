@@ -1,0 +1,10 @@
+{
+	"add-category": {
+		"en": "Add category",
+		"el": "Προσθήκη κατηγορίας"
+	},
+	"edit-category": {
+		"en": "Edit category",
+		"el": "Επεξεργασία κατηγορίας"
+	}
+}

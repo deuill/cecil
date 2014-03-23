@@ -1,0 +1,18 @@
+{
+	"module-alias": {
+		"en":	"Module alias",
+		"el":	"Ονομασία μονάδας"
+	},
+	"field": {
+		"en":	"Field",
+		"el":	"Πεδίο"
+	},
+	"alias": {
+		"en":	"Alias",
+		"el":	"Ονομασία"
+	},
+	"Hide": {
+		"en":	"Hide",
+		"el":	"Απόκρυψη"
+	}
+}

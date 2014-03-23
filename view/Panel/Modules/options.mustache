@@ -1,0 +1,37 @@
+<div class="form-horizontal">
+	<input type="hidden" name="data[{{module-name}}][options]" value="true">
+	{{#data}}
+	<div class="form-group">
+		{{#select}}
+		<label class="col-sm-4 control-label" for="input-{{name}}">{{label}}</label>
+		<div class="col-sm-8">
+			<select name="data[{{module-name}}][options][{{name}}]" id="input-{{name}}" class="form-control">
+				{{#options}}
+				<option value="{{value}}" {{selected}}>{{label}}</option>
+				{{/options}}
+			</select>
+		</div>
+		{{/select}}
+
+		{{#input}}
+		<label class="col-sm-4 control-label" for="input-{{name}}">{{label}}</label>
+		<div class="col-sm-8">
+			<input type="text" name="data[{{module-name}}][options][{{name}}]" value="{{value}}" id="input-{{name}}" class="form-control">
+		</div>
+		{{/input}}
+
+		{{#checkbox}}
+		<label class="col-sm-4 control-label" for="input-{{name}}">{{label}}</label>
+		<div class="col-sm-8">
+			<div class="checkbox">
+				<input type="checkbox" name="data[{{module-name}}][options][{{name}}]" id="input-{{name}}" {{checked}}>
+			</div>
+		</div>
+		{{/checkbox}}
+	</div>
+	{{/data}}
+
+	{{^data}}
+	<div class="text-center">[[No options available for this provider]].</div>
+	{{/data}}
+</div>

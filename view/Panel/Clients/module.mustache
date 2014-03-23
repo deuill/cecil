@@ -1,0 +1,32 @@
+{{#module}}
+<input type="hidden" name="module[id]" value="{{id}}">
+
+<div class="form-group">
+	<label class="control-label">[[Module alias]]</label>
+	<input type="text" name="module[alias]" value="{{alias}}" class="form-control">
+</div>
+{{/module}}
+
+<div class="table-responsive">
+	<table class="table table-unstyled">
+		<thead>
+			<tr>
+				<td><strong>[[Field]]</strong></td>
+				<td><strong>[[Alias]]</strong></td>
+				<td><strong>[[Hide]]</strong></td>
+			</tr>
+		</thead>
+		<tbody>
+		{{#fields}}
+		<tr>
+			<td>{{name}}</td>
+			<td>
+				<input type="hidden" name="field[{{name}}][id]" value="{{id}}" class="form-control">
+				<input type="text" name="field[{{name}}][alias]" value="{{alias}}" class="form-control">
+			</td>
+			<td><input type="checkbox" name="field[{{name}}][disable]" value="{{id}}" class="checkbox" {{#status}}checked{{/status}}></td>
+		</tr>
+		{{/fields}}
+		</tbody>
+	</table>
+</div>

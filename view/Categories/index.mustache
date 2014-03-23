@@ -1,0 +1,132 @@
+<form method="post" action="{{app.base}}categories/submit" class="form-order-items">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="panel-breadcrumbs">
+				{{#breadcrumbs}}
+				{{#select}}
+				<div class="crumb crumb-dropdown">
+					<select class="js-content-load" data-target=".js-select-content" data-placeholder="{{placeholder}}">
+						{{#options}}
+						<option data-url="{{app.base}}{{link}}" {{#active}}selected{{/active}}>{{name}}</option>
+						{{/options}}
+					</select>
+				</div>
+				{{/select}}
+				{{^select}}<a href="{{app.base}}{{link}}" class="crumb">{{#icon}}<i class="icon fa fa-{{icon}}"></i>{{/icon}} {{{name}}}</a>{{/select}}
+				{{/breadcrumbs}}
+			</div>
+
+			<div class="btn-toolbar">
+				<div class="btn btn-default js-reorder-list"><i class="fa fa-bars"></i></div>
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<div class="row">
+				<div class="panel-sidebar col-md-3">
+					<ul class="selection-list">
+					{{#modules}}
+						<li class="selection {{#active}}active{{/active}}">
+							<i class="chevron fa fa-chevron-right"></i>
+							<a href="{{app.base}}{{name}}" class="link"><i class="fa fa-{{icon}} fa-fw"></i> {{alias}}</a>
+						</li>
+					{{/modules}}
+					</ul>
+				</div>
+
+				<div class="col-md-9">
+					<div class="js-select-content">
+						<ol class="item-list selection-list js-sortable-nested js-sortable-disabled">
+							<li class="item selection js-sort-item-disabled">
+								<span class="link js-open-modal" data-toggle="modal" data-href="{{app.base}}categories/add/{{module-name}}" data-target="#category-add"><i class="fa fa-plus"></i> [[Add category]]</span>
+							</li>
+
+							{{#categories}}
+							<li class="item selection js-sort-item">
+								<div class="row js-sort-handle">
+									<input type="hidden" name="order[]" value="{{id}}" class="item-order">
+									<input type="hidden" name="order[]" value="sub-start" class="item-order">
+									<div class="col-xs-10">
+										<i class="fa fa-th-large fa-fw"></i> {{name}}
+									</div>
+									<div class="col-xs-2 js-sort-item-disabled">
+										<span class="btn btn-primary btn-sm pull-right js-open-modal" data-toggle="modal" data-href="{{app.base}}categories/edit/{{id}}" data-target="#category-edit"><i class="fa fa-pencil"></i> [[Edit]]</span>
+									</div>
+								</div>
+
+								<ol class="item-list selection-list">{{#sub}}
+									<li class="item selection js-sort-item">
+										<div class="row js-sort-handle">
+											<input type="hidden" name="order[]" value="{{id}}" class="item-order">
+											<input type="hidden" name="order[]" value="sub-start" class="item-order">
+											<div class="col-xs-10">
+												<i class="fa fa-th fa-fw"></i> {{name}}
+											</div>
+											<div class="col-xs-2 js-sort-item-disabled">
+												<span class="btn btn-primary btn-sm pull-right js-open-modal" data-toggle="modal" data-href="{{app.base}}categories/edit/{{id}}" data-target="#category-edit"><i class="fa fa-pencil"></i> [[Edit]]</span>
+											</div>
+										</div>
+
+										<ol class="item-list selection-list">{{#sub}}
+											<li class="item selection js-sort-item">
+												<div class="row js-sort-handle">
+													<input type="hidden" name="order[]" value="{{id}}" class="item-order">
+													<div class="col-xs-10">
+														<i class="fa fa-th fa-fw"></i> {{name}}
+													</div>
+													<div class="col-xs-2 js-sort-item-disabled">
+														<span class="btn btn-primary btn-sm pull-right js-open-modal" data-toggle="modal" data-href="{{app.base}}categories/edit/{{id}}" data-target="#category-edit"><i class="fa fa-pencil"></i> [[Edit]]</span>
+													</div>
+												</div>
+											</li>
+										{{/sub}}</ol>
+										<input type="hidden" name="order[]" value="sub-stop" class="item-order">
+									</li>
+								{{/sub}}</ol>
+								<input type="hidden" name="order[]" value="sub-stop" class="item-order">
+							</li>
+							{{/categories}}
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<form method="post" action="{{app.base}}categories/submit" enctype="multipart/form-data">
+	<div id="category-add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="category-add-label" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 id="category-add-label" class="modal-title">[[Add category]]</h4>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">[[Close]]</button>
+					<button type="submit" name="action[save]" class="btn btn-primary"><i class="fa fa-save"></i> [[Save]]</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<form method="post" action="{{app.base}}categories/submit" enctype="multipart/form-data">
+	<div id="category-edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="category-edit-label" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 id="category-edit-label" class="modal-title">[[Edit category]]</h4>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="submit" name="action[remove]" class="btn btn-danger pull-left"><i class="fa fa-times"></i> [[Remove]]</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">[[Close]]</button>
+					<button type="submit" name="action[save]" class="btn btn-primary"><i class="fa fa-save"></i> [[Save]]</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

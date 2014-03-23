@@ -1,0 +1,150 @@
+<div class="js-select-content">
+	{{#module}}
+	<form method="post" action="{{app.base}}panel/submit-module/{{id}}" id="module-form">
+		<div class="module-info media">
+			<div class="pull-left">
+				<label class="control-label">[[Icon]]</label>
+				<div class="icon-box" data-toggle="modal" data-target="#icon-popup">
+					<input type="hidden" name="icon" value="{{icon}}">
+					<i class="fa fa-{{icon}}"></i>
+				</div>
+			</div>
+
+			<div class="media-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label">[[Table name]]</label>
+							<input type="text" name="name" value="{{name}}" id="module-name" class="form-control" {{#id}}disabled{{/id}}>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label">[[Display name]]</label>
+							<input type="text" name="alias" value="{{alias}}" id="module-alias" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{^essential}}
+		<div class="table-responsive">
+			<table class="table table-unstyled module-data">
+				<thead>
+					<tr>
+						<td class="col-xs-1"><i class="fa fa-sort"></i></td>
+						<td class="col-xs-3"><strong>[[Type]]</strong></td>
+						<td class="col-xs-3"><strong>[[Column name]]</strong></td>
+						<td class="col-xs-3"><strong>[[Display name]]</strong></td>
+						<td class="col-xs-2"></td>
+					</tr>
+				</thead>
+				<tbody class="js-sortable">
+				{{#data}}
+					<tr class="js-sort-item js-remove-item">
+						<td class="col-xs-1 sort-handle js-sort-handle">
+							<input type="hidden" name="data[{{name}}][id]" value="{{id}}"><i class="fa fa-bars"></i>
+						</td>
+						<td class="col-xs-3">
+							<select name="data[{{name}}][type]" class="form-control js-change-options" data-target="#options-{{name}}" disabled>
+								{{#types}}
+								<option value="{{id}}" {{#selected}}selected{{/selected}}>{{type}}</option>
+								{{/types}}
+							</select>
+						</td>
+						<td class="col-xs-3"><input type="text" value="{{name}}" class="form-control" disabled></td>
+						<td class="col-xs-3"><input type="text" name="data[{{name}}][alias]" value="{{alias}}" class="form-control"></td>
+						<td class="col-xs-2">
+							<span class="btn btn-default js-toggle-options" data-toggle="modal" data-target="#options-{{name}}">
+								<i class="fa fa-cog"></i>
+							</span>
+							<span class="btn btn-danger js-remove"><i class="fa fa-times"></i></span>
+
+							<div class="modal fade" id="options-{{name}}" tabindex="-1" role="dialog" aria-labelledby="options-{{name}}-label" aria-hidden="true" data-id="{{id}}" data-name="{{name}}" data-type="{{type}}" data-url="{{app.base}}panel/module-options">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title" id="options-{{name}}-label">[[Options]]</h4>
+										</div>
+										<div class="modal-body"></div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">[[Close]]</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					{{/data}}
+
+					<tr id="clone-placeholder" data-direction="above"></tr>
+
+					<tr>
+						<td colspan="5" class="text-center">
+							<span class="btn btn-primary js-clone" data-master="#clone-master" data-placeholder="#clone-placeholder"><i class="fa fa-plus"></i> [[Add provider]]</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		{{/essential}}
+	</form>
+	{{/module}}
+</div>
+
+<table class="hidden">
+	<tr id="clone-master" class="js-sort-item js-remove-item hidden">
+		<td class="col-xs-1 sort-handle js-sort-handle"><i class="fa fa-bars"></i></td>
+		<td class="col-xs-3">
+			<select name="data[{index}][type]" class="form-control js-change-options" data-target="#options-{index}">
+				{{#types}}
+				<option value="{{id}}">{{type}}</option>
+				{{/types}}
+			</select>
+		</td>
+		<td class="col-xs-3"><input type="text" name="data[{index}][name]" class="form-control" required></td>
+		<td class="col-xs-3"><input type="text" name="data[{index}][alias]" class="form-control"></td>
+		<td class="col-xs-2">
+			<span class="btn btn-default js-toggle-options" data-toggle="modal" data-target="#options-{index}"><i class="fa fa-cog"></i></span>
+			<span class="btn btn-danger js-remove"><i class="fa fa-times"></i></span>
+
+			<div class="modal fade" id="options-{index}" tabindex="-1" role="dialog" aria-labelledby="options-{index}-label" aria-hidden="true" data-name="{index}" data-type="string" data-url="{{app.base}}panel/module-options">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="options-{index}-label">[[Options]]</h4>
+						</div>
+						<div class="modal-body"></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">[[Close]]</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<div class="modal fade" id="icon-popup" tabindex="-1" role="dialog" aria-labelledby="icon-popup-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="icon-popup-label">[[Choose module icon]]&hellip;</h4>
+			</div>
+			<div class="modal-body">
+				<ul class="module-icons selection-list">
+					{{#icons}}
+					<li class="item selection js-select" title="{{.}}" data-dismiss="modal" aria-hidden="true"><i class="fa fa-{{.}}" data-icon="{{.}}"></i></li>
+					{{/icons}}
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">[[Close]]</button>
+			</div>
+		</div>
+	</div>
+</div>

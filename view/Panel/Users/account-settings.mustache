@@ -1,0 +1,50 @@
+{{#user}}
+<form method="post" action="account-settings/submit/{{id}}" enctype="multipart/form-data">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="account-settings-label">[[Account settings]]</h4>
+			</div>
+			<div class="modal-body">
+				<div class="media">
+					<div class="media-choose pull-left">
+						<div id="js-media" class="media-preview hidden"></div>
+						<input type="file" name="upload" size="1" accept="image/*" title="[[Add image]]&hellip;" class="input js-media-preview" data-placeholder="#js-media">
+
+						{{#image}}
+						<div class="media-item js-remove-item">
+							<div class="overlay">
+								<div class="option delete js-remove"><i class="fa fa-times"></i></div>
+							</div>
+
+							<div class="media-wrapper" style="background-image: url({{url}})"></div>
+							<input type="hidden" name="image" value="{{checksum}}">
+						</div>
+						{{/image}}
+					</div>
+
+					<div class="media-body">
+						<p class="h3 text-muted">{{username}}</p>
+						<div class="form-group">
+							<label class="control-label">[[Full name]]</label>
+							<input type="text" name="fullname" value="{{fullname}}" class="form-control" autocomplete="off" placeholder="[[Full name]]">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label">[[Password]]</label>
+					<div class="form-group"><input type="password" name="previous-password" value="" placeholder="Previous password" class="form-control"></div>
+					<div class="form-group"><input type="password" name="new-password" value="" placeholder="New password" class="form-control"></div>
+					<div class="form-group"><input type="password" name="confirm-password" value="" placeholder="Confirm password" class="form-control"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">[[Close]]</button>
+				<button type="submit" name="action[save]" class="btn btn-primary">[[Save]]</button>
+			</div>
+		</div>
+	</div>
+</form>
+{{/user}}

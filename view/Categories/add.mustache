@@ -1,0 +1,21 @@
+<div class="category-container">
+	<div class="category-info">
+		<input type="hidden" name="category[module]" value="{{category-module}}">
+		<input type="hidden" name="category[mother]" value="{{category-mother}}">
+		<div class="form-group">
+			<input type="text" name="category[name]" class="form-control" placeholder="[[Category name]]" required>
+		</div>
+		<div class="form-group">
+			<textarea name="category[description]" rows="5" class="category-descr form-control" placeholder="[[Category description]]"></textarea>
+		</div>
+	</div>
+
+	<div class="media-list js-sortable">
+		<div class="media-item media-item-sm item-new">
+			<i class="icon fa fa-plus-circle"></i>
+			<input type="file" name="files[]" size="1" accept="image/*" title="[[Add images]]&hellip;" class="input js-media-preview" data-placeholder="#js-files-placeholder" multiple>
+		</div>
+
+		<div id="js-files-placeholder" class="media-item media-item-sm media-preview hidden"></div>
+	</div>
+</div>

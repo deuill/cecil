@@ -1,0 +1,18 @@
+{
+	"account-settings": {
+		"en":	"Account settings",
+		"el":	"Ρυθμίσεις λογαριασμού"
+	},
+	"password": {
+		"en":	"Password",
+		"el":	"Κωδικός χρήστη"
+	},
+	"save": {
+		"en":	"Save",
+		"el":	"Αποθήκευση"
+	},
+	"close": {
+		"en":	"Close",
+		"el":	"Κλείσιμο"
+	}
+}

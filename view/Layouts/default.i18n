@@ -1,0 +1,74 @@
+{
+	"sign-in": {
+		"en":	"Sign in",
+		"el":	"Είσοδος"
+	},
+	"login": {
+		"en":	"Login",
+		"el":	"Είσοδος"
+	},
+	"logout": {
+		"en":	"Logout",
+		"el":	"Αποσύνδεση"
+	},
+	"username": {
+		"en":	"Username",
+		"el":	"Όνομα χρήστη"
+	},
+	"password": {
+		"en":	"Password",
+		"el":	"Κωδικός χρήστη"
+	},
+	"main": {
+		"en":	"Main",
+		"el":	"Κεντρικό"
+	},
+	"quick-stats": {
+		"en":	"Quick Stats",
+		"el":	"Στατιστικά"
+	},
+	"shortcuts": {
+		"en":	"Shortcuts",
+		"el":	"Συντομεύσεις"
+	},
+	"account-settings": {
+		"en":	"Account settings",
+		"el":	"Ρυθμίσεις λογαριασμού"
+	},
+	"item-list": {
+		"en":	"Item list",
+		"el":	"Λίστα"
+	},
+	"item-details": {
+		"en":	"Item details",
+		"el":	"Λεπτομέρειες"
+	},
+	"add-new": {
+		"en":	"Add new",
+		"el":	"Προσθήκη"
+	},
+	"of": {
+		"en":	"of",
+		"el":	"από"
+	},
+	"search": {
+		"en":	"Search",
+		"el":	"Αναζήτηση"
+	},
+	"edit": {
+		"en":	"Edit",
+		"el":	"Επεξεργασία"
+	},
+	"remove": {
+		"en":	"Remove",
+		"el":	"Αφαίρεση"
+	},
+	"save": {
+		"en":	"Save",
+		"el":	"Αποθήκευση"
+	},
+	"close": {
+		"en":	"Close",
+		"el":	"Κλείσιμο"
+	}
+}

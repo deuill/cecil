@@ -1,0 +1,66 @@
+.bootstrap-tagsinput {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	padding: 5px 6px 0;
+	color: #555;
+	cursor: text;
+	vertical-align: middle;
+	border-radius: 4px;
+	max-width: 100%;
+	min-height: 35px;
+	line-height: 24px;
+}
+
+.bootstrap-tagsinput input {
+	border: none;
+	box-shadow: none;
+	outline: none;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	width: auto !important;
+	max-width: inherit;
+}
+
+.bootstrap-tagsinput input:focus {
+	border: none;
+	box-shadow: none;
+}
+
+.bootstrap-tagsinput .tag {
+	background: #eee repeat-x center;
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#eeeeee));
+	background-image: -webkit-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+	background-image: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+	background-image: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%);
+	border: 1px solid #ccc;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	color: #333;
+	cursor: default;
+	display: inline-block;
+	font-size: 100%;
+	font-weight: normal;
+	padding: 3px 20px 3px 5px;
+	position: relative;
+	margin: 0 1px 5px 0;
+}
+
+.bootstrap-tagsinput .tag [data-role="remove"] {
+	background: url("../../img/chosen/chosen-sprite.png") right top no-repeat;
+	height: 10px;
+	position: absolute;
+	right: 4px;
+	top: 6px;
+	width: 12px;
+	cursor: pointer;
+}
+
+.bootstrap-tagsinput .tag [data-role="remove"]:hover {
+	background-position: right -11px;
+}
+
+.js-tag-list + .bootstrap-tagsinput .tag {
+	display: block;
+	text-align: left;
+}

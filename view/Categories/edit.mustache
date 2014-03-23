@@ -1,0 +1,34 @@
+{{#category}}
+<div class="category-container">
+	<div class="category-info">
+		<input type="hidden" name="category[id]" value="{{id}}">
+		<input type="hidden" name="category[module]" value="{{module}}">
+		<input type="hidden" name="category[mother]" value="{{mother}}">
+		<div class="form-group">
+			<input type="text" name="category[name]" value="{{name}}" class="category-title category-input form-control" placeholder="[[Category name]]" required>
+		</div>
+		<div class="form-group">
+			<textarea name="category[description]" rows="5" class="category-descr category-input form-control" placeholder="[[Category description]]">{{description}}</textarea>
+		</div>
+	</div>
+
+	<div class="media-list js-sortable">
+		<div class="media-item media-item-sm item-new">
+			<i class="icon fa fa-plus-circle"></i>
+			<input type="file" name="files[]" size="1" accept="image/*" title="[[Add images]]&hellip;" class="input js-media-preview" data-placeholder="#js-files-placeholder" multiple>
+		</div>
+
+		{{#files}}
+		<div class="media-item media-item-sm js-sort-item js-remove-item">
+			<div class="overlay js-sort-handle">
+				<div class="option delete js-remove"><i class="fa fa-times"></i></div>
+			</div>
+			<div class="media-wrapper" style="background-image: url({{thumb}})"></div>
+			<input type="hidden" name="files[old][]" value="{{id}}">
+		</div>
+		{{/files}}
+
+		<div id="js-files-placeholder" class="media-item media-item-sm media-preview hidden"></div>
+	</div>
+</div>
+{{/category}}

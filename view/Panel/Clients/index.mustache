@@ -1,0 +1,87 @@
+<div class="js-select-content">
+	{{#client}}
+	<form method="post" action="{{app.base}}panel/submit-client/{{id}}" id="client-form">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="form-header">[[Client name]]</label>
+					{{#id}}<input type="text" value="{{name}}" class="form-control" disabled>{{/id}}
+					{{^id}}<input type="text" name="name" placeholder="Client name" class="form-control" required>{{/id}}
+				</div>
+
+				{{#id}}
+				<div class="form-group">
+					<label class="form-header">[[Authorization key]]</label>
+					<input type="text" value="{{authkey}}" class="form-control" readonly>
+				</div>
+				{{/id}}
+
+				<div class="form-group">
+					<label class="form-header">[[Website URL]]</label>
+					{{#id}}<input type="url" name="url" value="{{url}}" placeholder="Website URL" class="form-control">{{/id}}
+					{{^id}}<input type="url" name="url" placeholder="Website URL" class="form-control">{{/id}}
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<label class="form-header">[[Modules]]</label>
+				<div class="table-responsive">
+					<table class="module-list table table-bordered">
+						<tbody>
+							{{#modules}}
+							<tr>
+								<td>
+									{{#id}}{{^essential}}
+									<span class="btn btn-primary btn-xs pull-right js-open-modal" data-href="{{app.base}}panel/client-module/{{client.id}}/{{id}}" data-toggle="modal" data-target="#module-edit">
+										<i class="fa fa-edit"></i> [[Edit]]
+									</span>
+									{{/essential}}{{/id}}
+									<label for="module-{{id}}"><i class="fa fa-{{icon}}"></i> {{alias}}</label>
+								</td>
+								<td class="col-md-1">
+									<input type="hidden" name="module[{{id}}][name]" value="{{name}}">
+									<input type="hidden" name="module[{{id}}][icon]" value="{{icon}}">
+									<input type="checkbox" name="module[{{id}}][checked]" id="module-{{id}}" class="checkbox" {{#selected}}checked{{/selected}}>
+								</td>
+							</tr>
+							{{/modules}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	{{#id}}
+	<label class="form-header">[[Users]]</label>
+	<ul class="selection-list item-list">
+		<li class="selection"><a href="{{app.base}}panel/users/{{id}}" class="link"><i class="fa fa-plus"></i> [[New user]]</a></li>
+
+		{{#users}}
+		<li class="selection item">
+			<i class="fa fa-user"></i> {{username}}
+			<a href="{{app.base}}panel/users/{{client.id}}/{{id}}" class="btn btn-primary btn-sm pull-right js-content-load" data-target=".js-container"><i class="fa fa-edit"></i> [[Edit]]</a>
+		</li>
+		{{/users}}
+	</ul>
+	{{/id}}
+
+	<form method="post" action="{{app.base}}panel/submit-client/{{id}}">
+		<div class="modal fade" id="module-edit" tabindex="-1" role="dialog" aria-labelledby="module-edit-label" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="module-edit-label">[[Module options]]</h4>
+					</div>
+					<div class="modal-body"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">[[Close]]</button>
+						<button type="submit" name="action[module-save]" class="btn btn-primary">[[Save]]</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	{{/client}}
+</div>

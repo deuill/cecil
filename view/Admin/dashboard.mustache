@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="icon"><i class="fa fa-star"></i></div>
+				<div class="title">[[Quick Stats]]</div>
+			</div>
+
+			<div class="panel-body">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="icon"><i class="fa fa-bookmark"></i></div>
+				<div class="title">[[Shortcuts]]</div>
+			</div>
+
+			<div class="panel-body">
+				{{#modules}}
+				<div class="shortcuts row selection-list">
+					{{#.}}
+					<div class="col-xs-3">
+						<a href="{{app.base}}{{name}}" class="shortcut selection">
+							<i class="icon fa fa-{{icon}}"></i>
+							<span class="title">{{alias}}</span>
+						</a>
+					</div>
+					{{/.}}
+				</div>
+				{{/modules}}
+			</div>
+		</div>
+	</div>
+</div>

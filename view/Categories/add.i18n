@@ -1,0 +1,14 @@
+{
+	"add-image": {
+		"en": "Add image",
+		"el": "Προσθήκη εικόνας"
+	},
+	"category-name": {
+		"en": "Category name",
+		"el": "Όνομα κατηγορίας"
+	},
+	"category-descr": {
+		"en": "Category description",
+		"el": "Περιγραφή κατηγορίας"
+	}
+}

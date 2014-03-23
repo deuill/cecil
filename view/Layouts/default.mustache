@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="{{app.lang}}" class="no-js lt-ie9 lt-ie8 lt-ie7">
+<![endif]-->
+<!--[if IE 7]>
+<html lang="{{app.lang}}" class="no-js lt-ie9 lt-ie8">
+<![endif]-->
+<!--[if IE 8]>
+<html lang="{{app.lang}}" class="no-js lt-ie9">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="{{app.lang}}" class="no-js">
+<!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<title>{{{app.title}}}</title>
+
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<link rel="stylesheet" href="{{app.base}}css/bootstrap.css">
+		<link rel="stylesheet" href="{{app.base}}css/main.css">
+		<script src="{{app.base}}js/vendor/modernizr-2.6.2.js"></script>
+	</head>
+	<body class="{{app.controller}} {{app.action}}">
+		<header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="navbar-inner" style="padding: 0 20px">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-nav">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="{{app.base}}">Cecil</a>
+				</div>
+
+				<nav class="main-nav collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						{{#page}}
+						{{#user}}
+						<li class="dropdown">
+							<a id="user-menu-label" class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="fa fa-user"></i> {{username}}
+							</a>
+
+							<ul class="dropdown-menu" role="menu" aria-labelledby="user-menu-label">
+								<div class="user-info media">
+									<div class="user-image media-object pull-left">
+										{{#image}}<img src="{{url}}" alt="" class="img">{{/image}}
+										{{^image}}<i class="avatar fa fa-user"></i>{{/image}}
+									</div>
+
+									<div class="media-body">
+										<span class="user-fullname">{{fullname}}</span>
+										<span class="user-username">{{username}}</span>
+									</div>
+								</div>
+								<li class="divider"></li>
+								<li><a href="{{app.base}}clients/edit-user/{{id}}">[[Account settings]]</a></li>
+								<li><a href="{{app.base}}login/logout">[[Logout]]</a></li>
+							</ul>
+						</li>
+						{{/user}}
+						{{/page}}
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<div class="main-container container">
+			{{{content}}}
+		</div>
+		
+		<script src="{{app.base}}js/vendor/jquery-1.10.2.js"></script>
+		<script src="{{app.base}}js/vendor/bootstrap-3.0.3.js"></script>
+		<script src="{{app.base}}js/vendor/require-2.1.9.js" data-main="{{app.base}}js/main" ></script>
+	</body>
+</html>

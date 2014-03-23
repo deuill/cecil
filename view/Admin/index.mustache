@@ -1,0 +1,105 @@
+<form method="post" action="{{app.base}}{{module}}/submit" class="form-order-items">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="panel-breadcrumbs">
+				{{#breadcrumbs}}
+				{{#select}}
+				<div class="crumb crumb-dropdown">
+					<select class="js-content-load" data-target=".js-select-content" data-placeholder="{{placeholder}}">
+						{{#options}}
+						<option data-url="{{app.base}}{{link}}" {{#active}}selected{{/active}}>{{name}}</option>
+						{{/options}}
+					</select>
+				</div>
+				{{/select}}
+				{{^select}}<a href="{{app.base}}{{link}}" class="crumb">{{#icon}}<i class="icon fa fa-{{icon}}"></i>{{/icon}} {{{name}}}</a>{{/select}}
+				{{/breadcrumbs}}
+			</div>
+
+			<div class="btn-toolbar">
+				{{#page}}
+				<label class="btn btn-default list-search">
+					<i class="icon-search fa fa-search"></i>
+					<input type="text" name="action[search]" value="{{item-search}}" class="input-search" placeholder="[[Search]]&hellip;">
+				</label>
+
+				<div class="btn btn-default js-reorder-list"><i class="fa fa-bars"></i></div>
+
+				<div class="btn-group">
+					{{#prev}}
+					<a href="{{app.base}}{{module}}/index/{{prev}}" class="btn btn-default "><i class="fa fa-chevron-left"></i></a>
+					{{/prev}}
+
+					{{^prev}}
+					<div class="btn btn-default disabled"><i class="fa fa-chevron-left"></i></div>
+					{{/prev}}
+
+					{{#next}}
+					<a href="{{app.base}}{{module}}/index/{{next}}" class="btn btn-default"><i class="fa fa-chevron-right"></i></a>
+					{{/next}}
+
+					{{^next}}
+					<div class="btn btn-default disabled"><i class="fa fa-chevron-right"></i></div>
+					{{/next}}
+				</div>
+
+				<div class="btn btn-default btn-unstyled">{{from}}&ndash;{{to}} [[of]] {{total}}</div>
+				{{/page}}
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<div class="row">
+				<div class="panel-sidebar col-md-3">
+					<ul class="selection-list">
+					{{#modules}}
+						<li class="selection {{#active}}active{{/active}}">
+							<i class="chevron fa fa-chevron-right"></i>
+							<a href="{{app.base}}{{name}}" class="link"><i class="fa fa-{{icon}} fa-fw"></i> {{alias}}</a>
+						</li>
+					{{/modules}}
+					</ul>
+				</div>
+
+				<div class="col-md-9">
+					<ul class="item-list selection-list js-sortable-disabled">
+						<li class="item selection js-sort-item-disabled">
+							<a href="{{app.base}}{{module}}/edit" class="link">
+								<i class="fa fa-plus"></i>
+								<span>[[Add new]]</span>
+							</a>
+						</li>
+
+						{{#items}}
+						<li class="item selection js-sort-item">
+							<div class="js-sort-handle row">
+								<div class="col-xs-9 title" title="{{{title}}}">
+									<input type="hidden" name="order[{{id}}]" value="{{order}}" class="item-order">
+									<span class="secondary">{{id}}</span>
+									<span class="secondary">{{date}}</span>
+									<span class="primary">{{title}}</span>
+								</div>
+								<div class="col-xs-3 js-sort-item-disabled">
+									<div class="pull-right">
+										<a href="{{app.base}}{{module}}/edit/{{id}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> [[Edit]] </a>
+
+										<div class="btn-group">
+											<a id="user-menu-label" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
+												<i class="fa fa-cog"></i>
+											</a>
+
+											<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="user-menu-label">
+												<li><a href="#" class="js-post-form" data-name="action[remove]" data-value="{{id}}"><i class="fa fa-times"></i> [[Remove]]</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						{{/items}}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
