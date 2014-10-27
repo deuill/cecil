@@ -2,7 +2,7 @@
  * Media preview plugin for jQuery and Cecil.
  *
  * Cecil, the de facto CMS for the Sleepy web application framework.
- * Copyright 2012 - 2014, Alex Palaistras (http://thoughtmonster.org)
+ * Copyright 2012 - 2014, Alex Palaistras (http://deuill.org)
  */
 ;define((function ($, window, document, undefined) {
 	$.fn.mediaPreview = function() {

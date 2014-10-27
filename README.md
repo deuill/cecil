@@ -39,10 +39,10 @@ users and modules.
 
 ### Anything else?
 
-In order to start developing on your own, there exists a [template application](https://github.com/thoughtmonster/sleepy-app/) you
+In order to start developing on your own, there exists a [template application](https://github.com/deuill/sleepy-app/) you
 can use as a launching pad.
 
-You can find a demo of Cecil [here](http://cecil-demo.thoughtmonster.org). The
+You can find a demo of Cecil [here](http://cecil-demo.deuill.org). The
 credentials for the demo user are **demo** and **demo123**. File uploading is
 disabled for the demo and the data is reset every now and then.
 

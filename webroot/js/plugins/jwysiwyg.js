@@ -5,7 +5,7 @@
  * https://github.com/jwysiwyg/jwysiwyg
  *
  * Modifications for Bootstrap 3 and Font Awesome 4 by Alex Palaistras, © 2013
- * https://github.com/thoughtmonster/jwysiwyg-bootstrap3
+ * https://github.com/deuill/jwysiwyg-bootstrap3
  * 
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
