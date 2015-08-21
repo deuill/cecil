@@ -14,25 +14,25 @@ var plugins = [
 require(plugins, function() {
 	// Enable dynamic page loading with History.js.
 	History.Adapter.bind(window, 'statechange', function() {
-		var State = History.getState();
+		var state = History.getState();
 
-		if (State.data.internal) {
-			var target = State.data.target;
+		if (state.data.internal) {
+			var target = state.data.target;
 			var container = $(target);
 			if (container.length === 0) {
 				var prevState = History.savedStates[History.savedStates.length - 2];
-				if (prevState.length === 0) {
-					window.location.href = State.url;
+				if (prevstate.length === 0) {
+					window.location.href = state.url;
 				}
 
-				target = prevState.data.target;
+				target = prevstate.data.target;
 				container = $(target);
 			}
 
 			var oldHeight = container.outerHeight();
 			container.css('height', oldHeight).css('overflow', 'hidden');
 			container.animate({opacity: 0}, 200, function() {
-				container.load(State.url + ' ' + target + ' > *', function(data) {
+				container.load(state.url + ' ' + target + ' > *', function(data) {
 					var btnToolbar = $('.panel-heading .btn-toolbar');
 					if (btnToolbar.html() != $(data).find('.panel-heading .btn-toolbar').html()) {
 						btnToolbar.animate({opacity: 0}, 200, function() {
@@ -55,7 +55,7 @@ require(plugins, function() {
 				});
 			});
 		} else {
-			window.location.href = State.url;
+			window.location.href = state.url;
 		}
 	});
 
